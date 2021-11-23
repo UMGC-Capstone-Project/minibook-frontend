@@ -9,6 +9,8 @@ const SignUpPage = () => {
   const [lastName, setLastName] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
+  const [passwordShown, setPasswordShown] = useState(false);
+
 
   const passwordValidation = (password: string) => {
     let pattern = /^[a-zA-Z0-9]*$/;
@@ -54,12 +56,14 @@ const SignUpPage = () => {
 
           <div style={{ display: "flex" }}>
             <input
+              type={passwordShown ? "text" : "password"}
               placeholder={"Password"}
               className={"default-input"}
               value={password}
               onChange={(elem) => setPassword(elem.target.value)}
             />
             <input
+              type={passwordShown ? "text" : "password"}
               placeholder={"Confirm Password"}
               className={"default-input"}
               value={confirmPassword}
