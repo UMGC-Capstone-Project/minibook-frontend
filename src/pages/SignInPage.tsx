@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const SignInPage = () => {
   const navigate = useNavigate();
+  const [passwordShown, setpasswordShown] = useState(false);
 
   return (
     <div className={"signInPage"}>
@@ -10,7 +11,7 @@ const SignInPage = () => {
         <div className={"signInPage__inner-container"}>
           <span className={"default-title"}>LOGIN</span>
           <input placeholder={"Email address"} className={"default-input"} />
-          <input placeholder={"Password"} className={"default-input"} />
+          <input type = {passwordShown ? "text":"password"} placeholder={"Password"} className={"default-input"} />
           <div className={"signInPage__checkbox"}>
             <input type={"checkbox"} /> <span>Remember me</span>
           </div>
