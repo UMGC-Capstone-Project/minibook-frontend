@@ -3,12 +3,18 @@ import { Link } from "react-router-dom";
 import DefaultButton from "../button/DefaultButton";
 
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout_action } from "../../redux/actions/login.action";
+import { handleSearch_action } from "../../redux/actions/search.action";
+import { thunkSearch } from "../../thunk/search.thunk";
 
-const Header = (props: { login: boolean; loading: boolean }) => {
-  const { login, loading } = props;
+const Header = () => {
+  const isLoggedIn = useSelector(
+    (elem: { auth: { isLoggedIn: boolean } }) => elem.auth.isLoggedIn
+  );
   const notifications = 0;
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const handleKeyPress = (e: any) => {
     console.log(e.key);
     if (e.key === "Enter") {
@@ -18,24 +24,39 @@ const Header = (props: { login: boolean; loading: boolean }) => {
 
   return (
     <div className={"header"}>
-      <Link to={"/"} className={"no-link"}>
+      <Link to={isLoggedIn ? "/profile" : "/"} className={"no-link"}>
         <span className={"header__logo "}>Minibook</span>
       </Link>
-      {loading ? (
+      {false ? (
         <></>
       ) : (
         <>
-          {login ? (
+          {isLoggedIn ? (
             <>
-              <div style={{ width: "180px" }}>
+              <div style={{ margin: "auto 0", width: "180px" }}>
                 <input
                   placeholder={"Search"}
                   className={"default-input"}
                   onKeyPress={handleKeyPress}
+                  onChange={(event) =>
+                    dispatch(thunkSearch(event.target.value))
+                  }
                 />
               </div>
               <div className={"header__notification-block"}>
                 Notification <span>{notifications}</span>
+              </div>
+
+              <div style={{ margin: "auto 25px auto 0px" }}>
+                <button
+                  className={"default-button"}
+                  onClick={() => {
+                    dispatch(logout_action());
+                    navigate("/");
+                  }}
+                >
+                  Logout
+                </button>
               </div>
             </>
           ) : (

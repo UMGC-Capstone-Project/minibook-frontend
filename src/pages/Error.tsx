@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Error = () => {
+const Error = (props: { pageUrl: string }) => {
+  const navigate = useNavigate();
+  setTimeout(() => {
+    navigate(props.pageUrl);
+  }, 2500);
   return (
     <div
       style={{

@@ -37,6 +37,10 @@ code {
   box-sizing: border-box;
   margin: 7px;
 }
+.highlighted-input{
+  border: 2px solid saddlebrown;
+  background-color: saddlebrown;
+}
 .default-block{
   width: 350px;
   margin: 100px auto auto;

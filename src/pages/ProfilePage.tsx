@@ -3,8 +3,11 @@ import userPhoto from "../assets/user-photo.jpg";
 import "../css/ProfilePage.css";
 import AboutBlock from "../components/AboutBlock/AboutBlock";
 import UserPhotosBlock from "../components/UserPhotosBlock/UserPhotosBlock";
+import { useSelector } from "react-redux";
+import { IUser } from "../interfaces/IUser";
 
 const ProfilePage = () => {
+  const user = useSelector((data: { auth: { user: IUser } }) => data.auth.user);
   return (
     <div className={"profilePage"}>
       <div className={"profilePage__user-block"}>
@@ -14,7 +17,9 @@ const ProfilePage = () => {
           className={"profilePage__user-img"}
         />
         <div className={"profilePage__user-inside-container"}>
-          <div className={"username"}>John Joe</div>
+          <div className={"username"}>
+            {user.firstName} {user.lastName}
+          </div>
           <span>
             Some quick example test to build on the card title and make up the
             bulk of the card's content.

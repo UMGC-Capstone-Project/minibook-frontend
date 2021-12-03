@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { IUser } from "../interfaces/IUser";
 
 const SettingsPage = () => {
   const [activeElement, setActiveElement] = useState(0);
+
+  const user = useSelector((elem: { auth: { user: IUser } }) => elem.auth.user);
   return (
     <div className={"settingPage"}>
       <div className={"settingPage__control-bar"}>
@@ -18,19 +22,21 @@ const SettingsPage = () => {
           <div className={"general-settings__options"}>
             <div className={"general-settings__option"}>
               <span>Name</span>
-              <span>John Doe</span>
-              <span>Update</span>
+              <span>
+                {user.firstName} {user.lastName}
+              </span>
+              <span onClick={() => {}}>Update</span>
             </div>
 
             <div className={"general-settings__option"}>
               <span>Display Name</span>
-              <span>John Doe</span>
+              <span>{user.displayName}</span>
               <span>Update</span>
             </div>
 
             <div className={"general-settings__option"}>
               <span>E-mail</span>
-              <span>John Doe</span>
+              <span>{user.email}</span>
               <span>Update</span>
             </div>
           </div>

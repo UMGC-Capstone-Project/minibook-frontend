@@ -1,6 +1,6 @@
 import React from "react";
 
-const ResponcePage = () => {
+const ResponsePage = () => {
   return (
     <div
       style={{ textAlign: "center", margin: "250px auto", fontSize: "32px" }}
@@ -10,4 +10,4 @@ const ResponcePage = () => {
   );
 };
 
-export default ResponcePage;
+export default ResponsePage;

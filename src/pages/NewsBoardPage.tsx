@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import Post from "../components/Post/Post";
 import userPhoto from "../assets/user-photo.jpg";
 import { Link } from "react-router-dom";
+import { IPost } from "../interfaces/IPost";
+import { INotification } from "../interfaces/INotification";
 
 const text =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n";
 
-const notifications: notification[] = [
+const notifications: INotification[] = [
   { from: "Jane Doe", description: "New message", time: 3 },
   { from: "Jane Doe", description: "Friend Request", time: 3 },
   { from: "Jane Doe", description: "Friend Request", time: 3 },
@@ -14,21 +16,9 @@ const notifications: notification[] = [
   { from: "Jane Doe", description: "New message", time: 3 },
   { from: "Jane Doe", description: "New message", time: 52 },
 ];
-export interface post {
-  title: string;
-  text: string;
-  time: number;
-  author: string;
-}
-
-export interface notification {
-  from: string;
-  time: number;
-  description: string;
-}
 
 const NewsBoardPage = () => {
-  const [posts, setPosts] = useState<post[]>([
+  const [posts, setPosts] = useState<IPost[]>([
     { title: "What is Lorem Ipsum?", text, author: "Jane Doe", time: 3 },
     { title: "What is Lorem Ipsum?", text, author: "Jane Doe", time: 3 },
     { title: "What is Lorem Ipsum?", text, author: "Jane Doe", time: 3 },

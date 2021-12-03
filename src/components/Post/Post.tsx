@@ -1,7 +1,7 @@
 import React from "react";
-import { post } from "../../pages/NewsBoardPage";
+import { IPost } from "../../interfaces/IPost";
 
-const Post = (props: post) => {
+const Post = (props: IPost) => {
   const { text, time, title, author } = props;
   return (
     <div className="post">

@@ -1,15 +1,13 @@
 import React from "react";
-import photo from "../assets/autumn.jpg";
-
-const results: { photo: string; title: string; summary: string }[] = [];
-for (let i = 0; i <= 4; i++)
-  results.push({
-    photo,
-    title: "[USER/GROUP/COMMENT/PHOTO]",
-    summary: "Truncated results of descriptions...",
-  });
+import { useSelector } from "react-redux";
+import { IUser } from "../interfaces/IUser";
+import { ISearch } from "../interfaces/ISearch";
 
 const SearchPage = () => {
+  const results = useSelector(
+    (data: { search: { search: ISearch[] } }) => data.search.search
+  );
+
   return (
     <div className={"searchPage"}>
       <span>Search Result</span>

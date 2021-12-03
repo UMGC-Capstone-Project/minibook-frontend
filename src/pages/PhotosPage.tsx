@@ -15,7 +15,7 @@ const PhotosPage = () => {
       {activeModal && (
         <ModalPhoto photo={activePhoto} setActiveModal={setActiveModal} />
       )}
-      <Header login={true} loading={false} />
+      <Header />
       <div className={"photosPage"}>
         <span className={"default-title"}>Photos</span>
         <div className={"photosPage__images-container"}>
