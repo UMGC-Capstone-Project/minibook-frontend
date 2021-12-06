@@ -20,6 +20,7 @@ const PhotosPage = () => {
         <span className={"default-title"}>Photos</span>
         <div className={"photosPage__images-container"}>
           {photos.map((elem) => (
+            // eslint-disable-next-line jsx-a11y/alt-text
             <img
               src={elem.photo}
               onClick={() => {

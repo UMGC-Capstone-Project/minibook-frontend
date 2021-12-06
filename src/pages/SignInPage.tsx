@@ -8,17 +8,22 @@ import { thunkLogin } from "../thunk/login.thunk";
 const emailPattern =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const SignInPage = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const navigate = useNavigate();
 
   const {
     register,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     setValue,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     getValues,
     watch,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     setError,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const data = watch();
 
   const dispatch = useDispatch();

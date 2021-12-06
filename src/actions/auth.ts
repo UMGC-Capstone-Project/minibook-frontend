@@ -12,7 +12,7 @@ import { userDTO } from "../DTOs/userDTO";
 
 export const register = (data: userDTO) => (dispatch: any) => {
   return AuthService.register(data).then(
-    (response) => {
+    (response: { data: { message: any; }; }) => {
       dispatch({
         type: REGISTER_SUCCESS,
       });
@@ -24,7 +24,7 @@ export const register = (data: userDTO) => (dispatch: any) => {
 
       return Promise.resolve();
     },
-    (error) => {
+    (error: { response: { data: { message: any; }; }; message: any; toString: () => any; }) => {
       const message =
         (error.response &&
           error.response.data &&
@@ -48,7 +48,7 @@ export const register = (data: userDTO) => (dispatch: any) => {
 
 export const login = (data: userDTO) => (dispatch: any) => {
   return AuthService.login(data).then(
-    (data) => {
+    (data: any) => {
       dispatch({
         type: LOGIN_SUCCESS,
         payload: { user: data },
@@ -56,7 +56,7 @@ export const login = (data: userDTO) => (dispatch: any) => {
 
       return Promise.resolve();
     },
-    (error) => {
+    (error: { response: { data: { message: any; }; }; message: any; toString: () => any; }) => {
       const message =
         (error.response &&
           error.response.data &&
